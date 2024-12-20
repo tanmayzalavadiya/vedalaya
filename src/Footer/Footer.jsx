@@ -25,16 +25,16 @@ export default function Footer() {
           <h1 className="text-white mb-4 font-bold">Categories</h1>
           <ul className="space-y-2">
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">Migraine & Headaches</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">Migraine & Headaches</a>
             </li>
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">Daily Wellness</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">Daily Wellness</a>
             </li>
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">Male Wellness</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">Male Wellness</a>
             </li>
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">Women's Health</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">Women's Health</a>
             </li>
           </ul>
         </div>
@@ -44,16 +44,16 @@ export default function Footer() {
           <h1 className="text-white mb-4 font-bold">Policies</h1>
           <ul className="space-y-2">
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">Privacy Policy</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">Privacy Policy</a>
             </li>
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">Refund</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">Refund</a>
             </li>
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">T&C</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">T&C</a>
             </li>
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">Delivery</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">Delivery</a>
             </li>
           </ul>
         </div>
@@ -63,10 +63,10 @@ export default function Footer() {
           <h1 className="text-white mb-4 font-bold">Useful Links</h1>
           <ul className="space-y-2">
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">Amazon Store</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">Amazon Store</a>
             </li>
             <li>
-              <a className="text-gray-400 hover:text-white transition-colors" href="#">1mg Store</a>
+              <a className="text-gray-400 hover:text-white transition-colors" href="/">1mg Store</a>
             </li>
           </ul>
         </div>
@@ -76,7 +76,7 @@ export default function Footer() {
           <h1 className="text-white mb-4 font-bold">Contact Us</h1>
           <ul className="space-y-4">
             <li className="flex items-center space-x-2">
-              <a href="#">
+              <a href="/">
                 <img src="" alt="" className="mr-2" />
               </a>
               <a className="text-gray-400 hover:text-white transition-colors" href="mailto:tanmayzalavadiya82@gmail.com">
@@ -84,7 +84,7 @@ export default function Footer() {
               </a>
             </li>
             <li className="flex items-center space-x-2">
-              <a href="#">
+              <a href="/">
                 <img src={phone} alt="" className="mr-2" />
               </a>
               <a className="text-gray-400 hover:text-white transition-colors" href="tel:+918200150197">
@@ -94,16 +94,16 @@ export default function Footer() {
           </ul>
 
           <div className="flex mt-6 space-x-4">
-            <a href="#" className="hover:text-white"> 
+            <a href="/" className="hover:text-white"> 
               <img src={facebook} alt="Icon 1" />
             </a>
-            <a href="#" className="hover:text-white"> 
+            <a href="/" className="hover:text-white"> 
               <img src={instagram} alt="Icon 2" />
             </a>
-            <a href="#" className="hover:text-white"> 
+            <a href="/" className="hover:text-white"> 
               <img src={youtube} alt="Icon 3" />
             </a>
-            <a href="#" className="hover:text-white"> 
+            <a href="/" className="hover:text-white"> 
               <img src={twitter} alt="Icon 4" />
             </a>
           </div>
