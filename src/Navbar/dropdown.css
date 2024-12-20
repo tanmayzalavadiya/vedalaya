@@ -1,0 +1,45 @@
+.nav-links li {
+    position: relative; /* This allows absolute positioning for the dropdown */
+  }
+  
+  .nav-links a {
+    color: white; /* Navbar link color */
+  }
+  
+  .absolute {
+    display: block; /* Ensures the dropdown is displayed */
+    background-color: white; /* Dropdown background color */
+    border: 1px solid #ccc; /* Light gray border for the dropdown */
+    border-radius: 4px; /* Slightly rounded corners */
+    z-index: 10; /* Ensure it appears above other content */
+    margin-top: 5px; /* Space between navbar and dropdown */
+    padding: 0; /* No padding for dropdown */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+    width: 200px; /* Set a specific width for the dropdown */
+    text-align: center;
+    left: 50%; /* Center it horizontally */
+    transform: translateX(-50%); /* Shift it back by half its width */
+    top: 180%; /* Adjust this based on your design */
+    border-radius: 4%;
+  }
+  
+  
+  ul {
+    list-style-type: none; /* Remove bullets */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .block {
+    display: block; /* Make links fill the dropdown */
+    color: black !important; /* Text color for dropdown links */
+    text-decoration: none; /* Remove underline */
+    padding: 15px 20px; /* Increase padding for more space */
+    font-size: 16px; /* Increase font size for better readability */
+    transition: background-color 0.2s; /* Smooth transition for hover effect */
+  }
+  
+  .block:hover {
+    background-color: #f0f0f0; /* Background color on hover */
+  }
+  
