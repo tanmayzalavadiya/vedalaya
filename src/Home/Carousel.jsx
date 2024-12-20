@@ -25,9 +25,9 @@ export default function Carousel() {
   const cardsPerPage = 4;
   const totalPages = Math.ceil(cards.length / cardsPerPage);
 
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
-  };
+  // const nextSlide = () => {
+  //   setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
+  // };
 
   const renderCards = () => {
     const startIndex = currentIndex * cardsPerPage;

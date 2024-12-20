@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion'; // Import Framer Motion
 
 const productsData = [
@@ -7,7 +7,6 @@ const productsData = [
 ];
 
 const Breadcrumb = () => {
-  const location = useLocation();
   const paths = [
     { name: 'Home', link: '/' },
     { name: 'Collections', link: '/collections' },

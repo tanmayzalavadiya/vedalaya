@@ -25,7 +25,7 @@ export default function GoStrezzImunity() {
       <div className='w-full md:w-[40%]'>
         <img
           src={images[currentImageIndex]}
-          alt={`Image ${currentImageIndex + 1}`}
+          alt={`Image`}
           className='w-full h-auto'
         />
       </div>
