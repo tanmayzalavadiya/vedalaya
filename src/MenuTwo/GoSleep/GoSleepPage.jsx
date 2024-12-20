@@ -12,6 +12,7 @@ import Science from "../../Home/Science";
 import WhyUs from "../GoStrezz/WhyUs";
 import GoSleepFaqs from "./GoSleepFaqs";
 import GoSleepReviews from "./GoSleepReviews";
+import Footer from "../../Footer/Footer";
 
 export default function GoSleepPage() {
   return (
@@ -29,6 +30,7 @@ export default function GoSleepPage() {
       <WhyUs />
       <GoSleepFaqs />
       <GoSleepReviews />
+      <Footer/>
     </div>
   );
 }

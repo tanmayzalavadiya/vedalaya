@@ -25,46 +25,39 @@ export default function Carousel() {
   const cardsPerPage = 4;
   const totalPages = Math.ceil(cards.length / cardsPerPage);
 
-  // const nextSlide = () => {
-  //   setCurrentIndex((prevIndex) => (prevIndex + 1) % totalPages);
-  // };
-
   const renderCards = () => {
     const startIndex = currentIndex * cardsPerPage;
     const endIndex = startIndex + cardsPerPage;
     return cards.slice(startIndex, endIndex).map((card) => (
       <div
         key={card.id}
-        className="card"
-        style={{
-          textAlign: 'center',
-          margin: '10px',
-          borderRadius: '10px',
-          padding: '20px',
-          background: '#f0f0f0',
-        }}
+        className="flex flex-col items-center p-4 bg-gray-100 rounded-lg shadow-md"
       >
         <img
           src={card.image}
           alt={card.title}
-          className='w-64 h-64 rounded-lg'
+          className="w-48 h-48 rounded-lg object-cover"
         />
-        <h3>{card.title}</h3>
+        <h3 className="mt-4 text-lg font-semibold">{card.title}</h3>
       </div>
     ));
   };
 
   return (
-    <div className='max-w-screen-xl mx-auto'>
-      <div className='flex justify-around'>
+    <div className="max-w-screen-xl mx-auto p-4">
+      {/* Carousel */}
+      <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {renderCards()}
       </div>
 
-      <div className='flex justify-center mt-4'>
+      {/* Pagination */}
+      <div className="flex justify-center mt-4 space-x-2">
         {Array.from({ length: totalPages }).map((_, index) => (
-          <div
+          <button
             key={index}
-            className={`w-3 h-3 mx-1 rounded-full ${index === currentIndex ? 'bg-blue-500' : 'bg-gray-300'}`}
+            className={`w-3 h-3 rounded-full transition-all ${
+              index === currentIndex ? 'bg-blue-500 scale-110' : 'bg-gray-300'
+            }`}
             onClick={() => setCurrentIndex(index)}
           />
         ))}
