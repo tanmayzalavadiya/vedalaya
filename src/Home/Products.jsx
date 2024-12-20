@@ -32,14 +32,14 @@ const productsData = {
 };
 
 const gradientOptions = [
-  'bg-gradient-to-r from-[#00BFFF] to-[#1E90FF]', // Electric Blue Gradient
-  'bg-gradient-to-r from-[#FF9A00] to-[#FF5E3A]', // Vibrant Sunset Gradient
-  'bg-gradient-to-r from-[#AB83E8] to-[#7B2D9B]', // Lavender Bliss Gradient
-  'bg-gradient-to-r from-[#FF512F] to-[#DD2476]', // Coral Splash
-  'bg-gradient-to-r from-[#1E90FF] to-[#00BFFF]', // Ocean Breeze Gradient
-  'bg-gradient-to-r from-[#FF5F6D] to-[#FFC371]', // Sunset Pink Gradient
-  'bg-gradient-to-r from-[#00C853] to-[#B2FF59]', // Blue Skies Gradient
-  'bg-gradient-to-r from-[#00BCD4] to-[#B2EBF2]'  // Matte Cyan
+  'bg-gradient-to-r from-[#00BFFF] to-[#1E90FF]',
+  'bg-gradient-to-r from-[#FF9A00] to-[#FF5E3A]',
+  'bg-gradient-to-r from-[#AB83E8] to-[#7B2D9B]',
+  'bg-gradient-to-r from-[#FF512F] to-[#DD2476]',
+  'bg-gradient-to-r from-[#1E90FF] to-[#00BFFF]',
+  'bg-gradient-to-r from-[#FF5F6D] to-[#FFC371]',
+  'bg-gradient-to-r from-[#00C853] to-[#B2FF59]',
+  'bg-gradient-to-r from-[#00BCD4] to-[#B2EBF2]'
 ];
 
 export default function Products() {
@@ -55,7 +55,7 @@ export default function Products() {
       <motion.div
         key={product.id}
         className="border p-4 w-full bg-white shadow-md rounded-lg mx-auto relative"
-        whileHover={{ scale: 1.05 }} // Increased zoom effect
+        whileHover={{ scale: 1.05 }}
       >
         <img
           src={product.image}
@@ -91,28 +91,23 @@ export default function Products() {
   return (
     <div className="max-w-screen-xl mx-auto p-4 mb-10">
       <h2 className="text-black font-bold text-4xl text-center pt-4">Choose Your Concern</h2>
-      
-      {/* Category Buttons */}
       <div className="flex justify-center mt-6 space-x-4 flex-wrap">
-  {Object.keys(productsData).map((category, index) => (
-    <motion.button
-      key={category}
-      onClick={() => handleCategoryChange(category)}
-      className={`py-2 px-4 rounded-full ${
-        activeCategory === category
-          ? 'bg-gradient-to-r from-[#4CAF50] to-[#A5D6A7] text-white scale-110' // Scale for active button
-          : `${gradientOptions[index % gradientOptions.length]} text-white`  // Gradient for inactive buttons
-      }`}
-      whileHover={{ scale: activeCategory === category ? 1.1 : 1.05 }} // Scale effect on hover
-      animate={{ scale: activeCategory === category ? 1.20 : 1 }} // Keep the active button zoomed in
-    >
-      {category}
-    </motion.button>
-  ))}
-</div>
-
-
-      {/* Product Grid */}
+        {Object.keys(productsData).map((category, index) => (
+          <motion.button
+            key={category}
+            onClick={() => handleCategoryChange(category)}
+            className={`py-2 px-4 rounded-full ${
+              activeCategory === category
+                ? 'bg-gradient-to-r from-[#4CAF50] to-[#A5D6A7] text-white scale-110'
+                : `${gradientOptions[index % gradientOptions.length]} text-white`
+            }`}
+            whileHover={{ scale: activeCategory === category ? 1.1 : 1.05 }}
+            animate={{ scale: activeCategory === category ? 1.2 : 1 }}
+          >
+            {category}
+          </motion.button>
+        ))}
+      </div>
       <motion.div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
         {renderProducts()}
       </motion.div>
