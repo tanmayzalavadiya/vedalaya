@@ -4,7 +4,7 @@ import passion3 from '../images/passion3.jpeg';
 export default function Dash() {
   return (
     <div
-      className='bg-cover bg-center min-h-screen'
+      className='bg-cover bg-center '
       style={{
         backgroundImage: `url(${passion3})`,
       }}
