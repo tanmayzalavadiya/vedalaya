@@ -14,7 +14,7 @@ const Navbar = () => {
       setToggle(!toggle);
       
     }
-  },[window.innerWidth,toggle])
+  },[toggle])
   
   // console.log(window.innerWidth);
 
