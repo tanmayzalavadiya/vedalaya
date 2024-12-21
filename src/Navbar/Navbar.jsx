@@ -6,37 +6,41 @@ import DeskNav from "./deskNav";
 
 const Navbar = () => {
 
-  const [toggle, setToggle] = useState(false);
+  const [showHamburger, setShowHamburger] = useState(false);
+  const [showNav, setShowNav] = useState(false);
   
 
-  useEffect(()=>{
-    if(window?.innerWidth <= 400){
-      setToggle(!toggle);
-      
-    }
-  },[toggle])
-  
-  // console.log(window.innerWidth);
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 638) {
+        setShowHamburger(true);
+      } else {
+        setShowHamburger(false);
+        setShowNav(false);
+      }
+    };
 
+    handleResize();
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const hamburgerHandler = () => {
+    setShowNav(!showNav);
+  }
+  
   return (
     <nav className={`navbar ${
-      toggle ? "h-screen" : ""
+      showNav ? "h-screen sticky top-0 w-screen z-30" : ""
     }`}>
-      {/* {window.innerWidth <= 400 ? (
-        <img
-          src={hamburger}
-          alt="menu-button"
-          className="w-8 p-2"
-          onClick={handlemenu}
-        />
-      ) : ( */}
       <div className="flex items-baseline">
-        {toggle && <div>
-          <img src={hamburger} alt="menu-btn" className="w-8 p-2"  />
+        {showHamburger && <div>
+          <img src={hamburger} alt="menu-btn" className="w-4 m-[25.4px] z-50" onClick={hamburgerHandler} />
         </div>}
-        {!toggle && 
-           <DeskNav />}
-           </div>
+        {(!showHamburger || showNav) && 
+           <DeskNav showNav={showNav} />}
+      </div>
       {/* )} */}
     </nav>
   );

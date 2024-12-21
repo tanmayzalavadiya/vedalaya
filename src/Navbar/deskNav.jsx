@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MenuOne from "../MenuOne/MenuOne"; // Make sure you are using MenuOne here
 
-const DeskNav = () => {
+const DeskNav = ({showNav}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isHealthDropdownOpen, setIsHealthDropdownOpen] = useState(false);
   let timeoutId;
@@ -30,7 +30,7 @@ const DeskNav = () => {
   };
 
   return (
-    <div className="container mx-auto flex flex-col sm:flex-row justify-between items-center py-4">
+    <div className={`container mx-auto flex flex-col sm:flex-row justify-between items-center py-4 ${showNav ? "" : "hidden"} `}>
       <div className="flex items-center mb-4 sm:mb-0">
         <Link to="/" className="text-2xl font-bold">
           <span className="text-white">

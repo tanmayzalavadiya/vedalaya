@@ -77,7 +77,7 @@ export default function Footer() {
                   <img src="" alt="" className="mr-2" />
                 </a>
                 <a className="text-gray-400 hover:text-white transition-colors" href="mailto:tanmayzalavadiya82@gmail.com">
-                  tanmayzalavadiya82@gmail.com
+                  tanmay82@gmail.com
                 </a>
               </li>
               <li className="flex items-center space-x-2">

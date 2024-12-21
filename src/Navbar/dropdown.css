@@ -5,6 +5,8 @@
   .nav-links a {
     color: white; /* Navbar link color */
   }
+
+  
   
   .absolute {
     display: block; /* Ensures the dropdown is displayed */
