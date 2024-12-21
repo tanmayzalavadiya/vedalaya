@@ -1,0 +1,76 @@
+/* Base dropdown styles */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown content styling */
+.dropdown-content {
+  position: absolute;
+  background-color: white; /* Background color */
+  border: 1px solid #ccc; /* Light gray border */
+  border-radius: 4px; /* Rounded corners */
+  z-index: 10; /* Ensure it appears above other content */
+  margin-top: 0; /* No margin to eliminate space */
+  padding: 0; /* No padding for the dropdown */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+  width: 600px; /* Fixed width for the dropdown */
+  text-align: center;
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Shift back by half its width */
+  top: 100%; /* Position below the trigger */
+  margin-left: 20px; /* Adding some left margin to give a gap from the end of the navbar */
+  overflow-y: auto; /* Enable vertical scrolling inside the menu if content overflows */
+  max-height: 80vh; /* Limit the height of the dropdown to fit in screen size */
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Styling for the grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr); /* Default single column */
+}
+
+@media (min-width: 640px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on small screens */
+  }
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns for larger screens, with two categories on top and two below */
+  }
+}
+
+/* Dropdown links styling */
+.dropdown-content a {
+  display: block; /* Make links fill the dropdown */
+  color: black; /* Text color */
+  text-decoration: none; /* Remove underline */
+  padding: 15px 20px; /* Padding for links */
+  font-size: 16px; /* Font size for links */
+  transition: background-color 0.2s; /* Smooth hover transition */
+}
+
+.dropdown-content a:hover {
+  background-color: #f0f0f0; /* Hover background color */
+}
+
+/* Mobile view - Adjust the dropdown on mobile to fit the screen */
+@media (max-width: 640px) {
+  .dropdown-content {
+    width: 70vw; /* Reduce width for mobile screens */
+    max-height: 70vh; /* Adjust height for mobile to prevent it from overflowing */
+    overflow-y: auto; /* Enable vertical scrolling inside the dropdown */
+    padding: 5px; /* Add some padding inside the dropdown */
+  }
+
+  .grid {
+    grid-template-columns: 1fr; /* Single column for mobile */
+  }
+}
