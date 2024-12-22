@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { useCart } from '../Cart/CartContext';// Import useCart hook
 
 // Sample product data (JSON-like format)
 const productsData = {
@@ -44,6 +45,8 @@ const gradientOptions = [
 
 export default function Products() {
   const [activeCategory, setActiveCategory] = useState('Best Seller');
+  const { addToCart } = useCart(); // Use the context's addToCart function
+
 
   const handleCategoryChange = (category) => {
     setActiveCategory(category);
@@ -78,6 +81,7 @@ export default function Products() {
         <p className="mt-1 font-bold pb-2 text-[#ed548c]">FOR: <span className="text-black">{product.forText}</span></p>
         <p className="mt-1 font-bold pb-8 text-[#ed548c]">WITH: <span className="text-black">{product.withText}</span></p>
         <motion.button
+          onClick={() => addToCart(product)} // Add the product to the cart
           className="mt-4 py-2 px-4 bg-[#ed548c] hover:bg-[#f02770] text-white rounded-lg w-full"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}

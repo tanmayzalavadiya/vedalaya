@@ -43,7 +43,7 @@
 
 @media (min-width: 1024px) {
   .grid {
-    grid-template-columns: repeat(2, 1fr); /* Two columns for larger screens, with two categories on top and two below */
+    grid-template-columns: repeat(4, 1fr); /* Two columns for larger screens, with two categories on top and two below */
   }
 }
 
