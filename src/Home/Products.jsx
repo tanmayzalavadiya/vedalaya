@@ -95,7 +95,7 @@ export default function Products() {
   return (
     <div className="max-w-screen-xl mx-auto p-4 mb-10">
       <h2 className="text-black font-bold text-4xl text-center pt-4">Choose Your Concern</h2>
-      <div className="flex justify-center mt-6 space-x-4 flex-wrap">
+      <div className="flex justify-center mt-6 space-x-4 flex-wrap sm:flex flex-col h-[45px] sm:overflow-x-scroll overflow-y-hidden p-[10px] scrollbar-hide">
         {Object.keys(productsData).map((category, index) => (
           <motion.button
             key={category}
@@ -103,7 +103,7 @@ export default function Products() {
             className={`py-2 px-4 rounded-full ${
               activeCategory === category
                 ? 'bg-gradient-to-r from-[#4CAF50] to-[#A5D6A7] text-white scale-110'
-                : `${gradientOptions[index % gradientOptions.length]} text-white`
+                : `${gradientOptions[index % gradientOptions.length]} text-white `
             }`}
             whileHover={{ scale: activeCategory === category ? 1.1 : 1.05 }}
             animate={{ scale: activeCategory === category ? 1.2 : 1 }}

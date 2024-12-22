@@ -15,7 +15,7 @@ const Breadcrumb = () => {
   ];
 
   return (
-    <nav className="breadcrumb mb-4 pt-5">
+    <nav className="breadcrumb mb-4 pt-5 px-4">
       {paths.map((path, index) => (
         <span key={index}>
           <Link
@@ -36,10 +36,10 @@ export default function PCOD() {
   return (
     <div className='max-w-screen-xl mx-auto'>
       <Breadcrumb />
-      <h2 className='text-3xl font-bold mb-8'>PCOS/PCOD</h2>
+      <h2 className='text-3xl font-bold mb-8 px-4'>PCOS/PCOD</h2>
 
       {/* Product Cards Section */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-4">
         {productsData.map((product) => (
           <motion.div
             key={product.id}

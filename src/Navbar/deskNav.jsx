@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MenuOne from "../MenuOne/MenuOne"; // Make sure you are using MenuOne here
+import cart from '../images/cart.png'
 
 const DeskNav = ({showNav}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -130,8 +131,19 @@ const DeskNav = ({showNav}) => {
       {/* Search and Cart Links */}
       <div className="search-cart-links flex space-x-4 mt-4 sm:mt-0">
         <Link to="/search">Search</Link>
-        <Link to="/cart">Cart</Link>
-      </div>
+        <Link to="/cart" className="relative inline-block">
+        {/* Badge */}
+        <span className="absolute top-0 right-0 inline-flex items-center justify-center px-2 py-1 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-full">
+          4
+        </span>
+
+        {/* PNG Image */}
+        <img
+          src={cart}
+          alt="Cart Icon"
+          className="w-6 h-6"
+        />
+      </Link></div>
     </div>
   );
 };

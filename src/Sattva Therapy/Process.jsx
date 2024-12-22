@@ -21,7 +21,7 @@ export default function Process() {
 
           <div className='w-full justify-between md:flex flex-col items-center md:items-start p-4'>
             {/* Paragraph Section */}
-            <p className='text-black text-lg text-justify pt-16'>
+            <p className='text-black text-lg text-justify pt-16 px-2'>
               According to our Vedas, Knowledge or consciousness is the combination of three values:
               Since we are also a creation of consciousness, we can correlate these three aspects of
               consciousness with the three aspects of our nature- Soul, Mind and Body, three aspects

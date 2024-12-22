@@ -112,7 +112,7 @@ export default function Footer() {
           <div className="max-w-screen-xl mx-auto flex flex-col sm:flex-row justify-between items-center px-4">
             {/* Copyright Text */}
             <p className="text-gray-400 text-sm text-center sm:text-left mb-2 sm:mb-0">
-              Copyright © 2023
+              Copyright © 2025
             </p>
 
             {/* Spacer or Additional Element */}

@@ -12,34 +12,34 @@ const Breadcrumb = () => {
     { name: 'Cart', link: '/Cart' },
   ];
 
-  const productsData = {
-    "Best Seller": [
-      { id: 1, image: 'img1.jpg', title: 'Product 1', price: 100, offerPrice: 80, rating: 4, forText: 'Adults', withText: 'Energy' },
-      { id: 2, image: 'img2.jpg', title: 'Product 2', price: 150, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
-      { id: 3, image: 'img3.jpg', title: 'Product 3', price: 200, offerPrice: 180, rating: 3, forText: 'Women', withText: 'Health' },
-      { id: 4, image: 'img4.jpg', title: 'Product 4', price: 250, offerPrice: 230, rating: 5, forText: 'Kids', withText: 'Growth' }
-    ],
-    "Migraine & Headache": [
-      { id: 5, image: 'img5.jpg', title: 'Product 5', price: 300, offerPrice: 280, rating: 4, forText: 'Everyone', withText: 'Pain Relief' }
-    ],
-    "Daily Wellness": [
-      { id: 6, image: 'img6.jpg', title: 'Product 6', price: 120, offerPrice: 100, rating: 5, forText: 'Everyone', withText: 'Wellness' },
-      { id: 2, image: 'img2.jpg', title: 'Product 2', price: 150, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
-      { id: 3, image: 'img3.jpg', title: 'Product 3', price: 200, offerPrice: 180, rating: 3, forText: 'Women', withText: 'Health' },
-    ],
-    "Male Wellness": [
-      { id: 7, image: 'img7.jpg', title: 'Product 7', price: 140, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' }
-    ],
-    "Women Wellness": [
-      { id: 8, image: 'img8.jpg', title: 'Product 8', price: 160, offerPrice: 140, rating: 4, forText: 'Women', withText: 'Health' }
-    ],
-    "Fitness": [
-      { id: 9, image: 'img9.jpg', title: 'Product 9', price: 200, offerPrice: 180, rating: 4, forText: 'Everyone', withText: 'Fitness' }
-    ],
-    "Nutrition": [
-      { id: 10, image: 'img10.jpg', title: 'Product 10', price: 250, offerPrice: 230, rating: 5, forText: 'Adults', withText: 'Nutrition' }
-    ]
-  };
+  // const productsData = {
+  //   "Best Seller": [
+  //     { id: 1, image: 'img1.jpg', title: 'Product 1', price: 100, offerPrice: 80, rating: 4, forText: 'Adults', withText: 'Energy' },
+  //     { id: 2, image: 'img2.jpg', title: 'Product 2', price: 150, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
+  //     { id: 3, image: 'img3.jpg', title: 'Product 3', price: 200, offerPrice: 180, rating: 3, forText: 'Women', withText: 'Health' },
+  //     { id: 4, image: 'img4.jpg', title: 'Product 4', price: 250, offerPrice: 230, rating: 5, forText: 'Kids', withText: 'Growth' }
+  //   ],
+  //   "Migraine & Headache": [
+  //     { id: 5, image: 'img5.jpg', title: 'Product 5', price: 300, offerPrice: 280, rating: 4, forText: 'Everyone', withText: 'Pain Relief' }
+  //   ],
+  //   "Daily Wellness": [
+  //     { id: 6, image: 'img6.jpg', title: 'Product 6', price: 120, offerPrice: 100, rating: 5, forText: 'Everyone', withText: 'Wellness' },
+  //     { id: 2, image: 'img2.jpg', title: 'Product 2', price: 150, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
+  //     { id: 3, image: 'img3.jpg', title: 'Product 3', price: 200, offerPrice: 180, rating: 3, forText: 'Women', withText: 'Health' },
+  //   ],
+  //   "Male Wellness": [
+  //     { id: 7, image: 'img7.jpg', title: 'Product 7', price: 140, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' }
+  //   ],
+  //   "Women Wellness": [
+  //     { id: 8, image: 'img8.jpg', title: 'Product 8', price: 160, offerPrice: 140, rating: 4, forText: 'Women', withText: 'Health' }
+  //   ],
+  //   "Fitness": [
+  //     { id: 9, image: 'img9.jpg', title: 'Product 9', price: 200, offerPrice: 180, rating: 4, forText: 'Everyone', withText: 'Fitness' }
+  //   ],
+  //   "Nutrition": [
+  //     { id: 10, image: 'img10.jpg', title: 'Product 10', price: 250, offerPrice: 230, rating: 5, forText: 'Adults', withText: 'Nutrition' }
+  //   ]
+  // };
   
   return (
     <nav className="breadcrumb mb-4 pt-5">

@@ -11,7 +11,7 @@ export default function Dash() {
     >
       <div className='max-w-screen-xl mx-auto flex md:flex-col px-4 py-12 justify-center items-start'>
         <div className='flex flex-col items-start'>
-          <p className='text-black text-3xl mb-0' style={{ lineHeight: '1.2' }}>
+          <p className='text-black text-3xl mb-0 pb-4' style={{ lineHeight: '1.2' }}>
             Dash ki sanskriti <br />
             Dash ka science
           </p>

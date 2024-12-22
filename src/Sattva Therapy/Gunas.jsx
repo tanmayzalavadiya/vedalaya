@@ -8,7 +8,7 @@ export default function Gunas() {
           <h3 className='font-bold text-4xl text-black text-center'>
           GUNAS
           </h3>
-          <p className='text-xl text-center mt-10'>Manas Roga occurs due to aggravation of Tamas and Rajas guna. It can be balanced by increasing Sattva Guna.</p>
+          <p className='text-xl text-center mt-10 px-4'>Manas Roga occurs due to aggravation of Tamas and Rajas guna. It can be balanced by increasing Sattva Guna.</p>
         </div>
       </div>
 

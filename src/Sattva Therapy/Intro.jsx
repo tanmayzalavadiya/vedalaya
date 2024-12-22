@@ -8,7 +8,7 @@ const Intro = () => {
         <div className="flex flex-col md:flex-row items-center">
           {/* Left Section */}
           <div className="w-full md:w-1/2 mb-8 md:mb-0">
-            <h1 className="text-5xl md:text-6xl font-bold text-[#3e602d] mb-6">
+            <h1 className="text-5xl md:text-6xl md:text-left font-bold text-center text-[#3e602d] mb-6">
               Sattva <br /> Therapy
             </h1>
             <p className="text-xl text-[#3e602d] leading-relaxed">

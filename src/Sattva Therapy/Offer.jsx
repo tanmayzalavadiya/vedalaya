@@ -11,16 +11,16 @@ export default function Offer() {
     <div className="flex flex-col-reverse md:flex-row">
   {/* Text Section */}
   <div className="w-full md:w-[60%] flex flex-col items-center md:items-start p-4">
-    <p className='text-black text-lg text-justify pb-5'>
+    <p className='text-black text-lg text-justify pb-5 px-2'>
       Sattva means Maan (Mind) and Avajaya means to win or conquer. Hence sattvavajaya means to conquer one’s mind and resist from the things that are not good for the body. Sattvavajaya chikitsa plays a significant role in maintaining a healthy and harmonious life because it not only prevents the impairments of Dhee, Dhriti and Smriti, it helps them in bringing in a state of balance.
     </p>
-    <p className='text-black text-lg text-justify pb-5'>
+    <p className='text-black text-lg text-justify pb-5 px-2'>
       A person is called healthy not only when his doshas are balanced, but also the Manas should be in balance in presence of Atma for proper and healthy state of body. As per WHO definition of health, “Health is a state of complete physical, mental, and social well-being and not merely absence of disease or infirmity.”
     </p>
-    <p className='text-black text-lg text-justify pb-5'>
+    <p className='text-black text-lg text-justify pb-5 px-2'>
       Sattva plays a huge role in keeping a person healthy even during the time of any physical disorder.
     </p>
-    <p className='text-black text-lg text-justify pb-5'>
+    <p className='text-black text-lg text-justify pb-5 px-2'>
       Nowadays, modern research shows that 80-90% disorders are psychosomatic in nature due to a stressful life and irregular daily routines. Ayurveda gives more emphasis on Sattvavajaya chikitsa in managing Manovikar, as well as physiological.
     </p>
   </div>
