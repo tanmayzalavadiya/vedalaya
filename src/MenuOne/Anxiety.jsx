@@ -1,6 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'; // Add Link here
+import { Link} from 'react-router-dom'; // Add Link here
 import { motion } from 'framer-motion'; // Import Framer Motion
 import {productsData} from '../Home/Products'
 

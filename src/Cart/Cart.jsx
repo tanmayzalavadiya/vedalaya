@@ -303,7 +303,7 @@ const Cart = () => {
                 {/* Decrease Quantity Button */}
                 <button
                   onClick={() => handleQuantityChange(item.id, -1)}
-                  className={`px-2 py-1 bg-red-500 text-white rounded ml-2 ${item.quantity == 1 ? "bg-gray-400" : ""}`}
+                  className={`px-2 py-1 bg-red-500 text-white rounded ml-2 ${item.quantity === 1 ? "bg-gray-400" : ""}`}
                   disabled={item.quantity <= 1} // Prevent reducing below 1
                 >
                   -
