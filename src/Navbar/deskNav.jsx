@@ -9,7 +9,7 @@ const DeskNav = ({showNav,setShowNav}) => {
   const [isHealthDropdownOpen, setIsHealthDropdownOpen] = useState(false);
   let timeoutId;
 
-      const { cartItems, removeFromCart } = useCart(); // Destructure cartItems and removeFromCart from useCart()
+      const { cartItems} = useCart(); // Destructure cartItems and removeFromCart from useCart()
   
 
   const handleShopMouseEnter = () => {
