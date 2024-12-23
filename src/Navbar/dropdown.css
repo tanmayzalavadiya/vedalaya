@@ -24,6 +24,23 @@
     top: 180%; /* Adjust this based on your design */
     border-radius: 4%;
   }
+
+  .badge-container {
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    padding: 2px;
+    display: flex;
+    background-color: black;
+    color: white;
+    border: none;
+    font-size: 10px;
+    justify-content: center;
+    align-items: center;
+  }
   
   
   ul {

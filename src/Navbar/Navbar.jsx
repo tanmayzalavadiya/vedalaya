@@ -31,7 +31,7 @@ const Navbar = () => {
   }
   
   return (
-    <nav className={`navbar ${
+    <nav className={`navbar sticky top-0 z-30 ${
       showNav ? "h-screen sticky top-0 w-screen z-30" : ""
     }`}>
       <div className="flex items-baseline">
@@ -39,7 +39,7 @@ const Navbar = () => {
           <img src={hamburger} alt="menu-btn" className="w-4 m-[25.4px] z-50" onClick={hamburgerHandler} />
         </div>}
         {(!showHamburger || showNav) && 
-           <DeskNav showNav={showNav} />}
+           <DeskNav showNav={showNav}  showHamburger={showHamburger} setShowNav={setShowNav} />}
       </div>
       {/* )} */}
     </nav>

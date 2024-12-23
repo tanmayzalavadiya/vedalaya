@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 
 
 
-
 const Breadcrumb = () => {
   const paths = [
     { name: 'Home', link: '/' },
