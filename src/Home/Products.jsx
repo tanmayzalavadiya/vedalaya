@@ -1,34 +1,47 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { useCart } from '../Cart/CartContext';// Import useCart hook
+import GoDetox from '../images/products/GoDetox.jpg'
+import GoSleep from '../images/products/GoSleep.jpg'
+import GoStress from '../images/products/GoStress.jpg'
+import GoSurge from '../images/products/GoSurge.jpg'
+import GoMigraine from '../images/products/GoMigraine.jpg'
+import GoPerform from '../images/products/GoPerform.jpg'
+import GoBold from '../images/products/GoBold.jpg'
+import GoRegular from '../images/products/GoRegular.jpg'
+import GoNutrition from '../images/products/GoNutrition.jpg'
+
 
 // Sample product data (JSON-like format)
-const productsData = {
+export const productsData = {
   "Best Seller": [
-    { id: 1, image: 'img1.jpg', title: 'Product 1', price: 100, offerPrice: 80, rating: 4, forText: 'Adults', withText: 'Energy' },
-    { id: 2, image: 'img2.jpg', title: 'Product 2', price: 150, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
-    { id: 3, image: 'img3.jpg', title: 'Product 3', price: 200, offerPrice: 180, rating: 3, forText: 'Women', withText: 'Health' },
-    { id: 4, image: 'img4.jpg', title: 'Product 4', price: 250, offerPrice: 230, rating: 5, forText: 'Kids', withText: 'Growth' }
+    { id: 1, image: GoDetox, title: 'GoDetox', price: 100, offerPrice: 80, rating: 4, forText: 'Adults', withText: 'Energy' },
+    { id: 2, image: GoSleep, title: 'GoSleep', price: 150, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
+    { id: 3, image: GoStress, title: 'GoStress', price: 200, offerPrice: 180, rating: 3, forText: 'Women', withText: 'Health' },
+    { id: 4, image: GoSurge, title: 'GoSurge', price: 250, offerPrice: 230, rating: 5, forText: 'Kids', withText: 'Growth' }
   ],
   "Migraine & Headache": [
-    { id: 5, image: 'img5.jpg', title: 'Product 5', price: 300, offerPrice: 280, rating: 4, forText: 'Everyone', withText: 'Pain Relief' }
+    { id: 5, image: GoMigraine, title: 'GoMigraine', price: 300, offerPrice: 280, rating: 4, forText: 'Everyone', withText: 'Pain Relief' }
   ],
   "Daily Wellness": [
-    { id: 6, image: 'img6.jpg', title: 'Product 6', price: 120, offerPrice: 100, rating: 5, forText: 'Everyone', withText: 'Wellness' },
-    { id: 2, image: 'img2.jpg', title: 'Product 2', price: 150, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
-    { id: 3, image: 'img3.jpg', title: 'Product 3', price: 200, offerPrice: 180, rating: 3, forText: 'Women', withText: 'Health' },
+    { id: 1, image: GoDetox, title: 'GoDetox', price: 100, offerPrice: 80, rating: 4, forText: 'Adults', withText: 'Energy' },
+    { id: 2, image: GoSleep, title: 'GoSleep', price: 150, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
+    { id: 3, image: GoStress, title: 'GoStress', price: 200, offerPrice: 180, rating: 3, forText: 'Women', withText: 'Health' },
   ],
   "Male Wellness": [
-    { id: 7, image: 'img7.jpg', title: 'Product 7', price: 140, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' }
+    { id: 7, image: GoPerform, title: 'GoPerform', price: 140, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
+    { id: 4, image: GoSurge, title: 'GoSurge', price: 250, offerPrice: 230, rating: 5, forText: 'Kids', withText: 'Growth' },
+    { id: 6, image: GoBold, title: 'GoBold', price: 250, offerPrice: 230, rating: 5, forText: 'Kids', withText: 'Growth' }
   ],
   "Women Wellness": [
-    { id: 8, image: 'img8.jpg', title: 'Product 8', price: 160, offerPrice: 140, rating: 4, forText: 'Women', withText: 'Health' }
+    { id: 8, image: GoRegular, title: 'GoRegular', price: 160, offerPrice: 140, rating: 4, forText: 'Women', withText: 'Health' },
+    { id: 1, image: GoDetox, title: 'GoDetox', price: 100, offerPrice: 80, rating: 4, forText: 'Adults', withText: 'Energy' },
   ],
   "Fitness": [
-    { id: 9, image: 'img9.jpg', title: 'Product 9', price: 200, offerPrice: 180, rating: 4, forText: 'Everyone', withText: 'Fitness' }
+    { id: 7, image: GoPerform, title: 'GoPerform', price: 140, offerPrice: 120, rating: 5, forText: 'Men', withText: 'Strength' },
   ],
   "Nutrition": [
-    { id: 10, image: 'img10.jpg', title: 'Product 10', price: 250, offerPrice: 230, rating: 5, forText: 'Adults', withText: 'Nutrition' }
+    { id: 10, image: GoNutrition, title: 'GoNutrition', price: 250, offerPrice: 230, rating: 5, forText: 'Adults', withText: 'Nutrition' }
   ]
 };
 
@@ -75,8 +88,8 @@ export default function Products() {
         </div>
         <h3 className="text-lg font-semibold mt-2">{product.title}</h3>
         <div className="mt-1">
-          <span className="text-xl font-bold">${product.price}</span>
-          <span className="text-sm line-through text-gray-500 ml-2">${product.offerPrice}</span>
+          <span className="text-xl font-bold">₹{product.price}</span>
+          <span className="text-sm line-through text-gray-500 ml-2">₹{product.offerPrice}</span>
         </div>
         <p className="mt-1 font-bold pb-2 text-[#ed548c]">FOR: <span className="text-black">{product.forText}</span></p>
         <p className="mt-1 font-bold pb-8 text-[#ed548c]">WITH: <span className="text-black">{product.withText}</span></p>
