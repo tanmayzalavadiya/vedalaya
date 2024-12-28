@@ -7,7 +7,7 @@ import { useCart } from '../Cart/CartContext';
 const DeskNav = ({showNav,setShowNav, getCartTotal}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isHealthDropdownOpen, setIsHealthDropdownOpen] = useState(false);
-  const [subtotal, setSubtotal] = useState(localStorage.getItem("subtotal") || 0);
+  // const [subtotal, setSubtotal] = useState(localStorage.getItem("subtotal") || 0);
 
   let timeoutId;
 
@@ -46,20 +46,20 @@ const DeskNav = ({showNav,setShowNav, getCartTotal}) => {
 //  const totalitem =  localStorage.getItem("subtotal")
 //  console.log(totalitem);
 
- const updateSubtotal = () => {
-  setSubtotal(localStorage.getItem("subtotal") || "0");
-};
- useEffect(() => {
-  // Manually call `updateSubtotal` whenever `subtotal` is updated
-  updateSubtotal();
+//  const updateSubtotal = () => {
+//   setSubtotal(localStorage.getItem("subtotal") || "0");
+// };
+//  useEffect(() => {
+//   // Manually call `updateSubtotal` whenever `subtotal` is updated
+//   updateSubtotal();
 
-  // Optionally set an interval for frequent polling (if required)
-  const interval = setInterval(() => {
-    updateSubtotal();
-  }, 100);
+//   // Optionally set an interval for frequent polling (if required)
+//   const interval = setInterval(() => {
+//     updateSubtotal();
+//   }, 100);
 
-  return () => clearInterval(interval); // Cleanup interval on component unmount
-}, []);
+//   return () => clearInterval(interval); // Cleanup interval on component unmount
+// }, []);
 
 const { cartCount } = useCart(); // Access the cartCount value
 

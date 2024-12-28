@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { useCart } from "./CartContext"; // Assuming you're using the CartContext
+// import { useCart } from "./CartContext"; // Assuming you're using the CartContext
 import { motion } from "framer-motion";
 
 const Breadcrumb = () => {
