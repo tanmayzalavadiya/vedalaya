@@ -26,7 +26,8 @@ const Breadcrumb = () => {
 };
 
 const Cart = () => {
-  const { cartItems, removeFromCart } = useCart(); // Destructure from useCart hook
+  // const { cartItems, removeFromCart } = useCart(); 
+  // // Destructure from useCart hook
   const [updatedCart, setUpdatedCart] = useState([]);
 
   // Get cart items from localStorage on initial load
