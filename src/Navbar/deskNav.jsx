@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import MenuOne from "../MenuOne/MenuOne"; // Make sure you are using MenuOne here
 import cart from '../images/cart.png'
 import { useCart } from '../Cart/CartContext';
 
-const DeskNav = ({showNav,setShowNav}) => {
+const DeskNav = ({showNav,setShowNav, getCartTotal}) => {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isHealthDropdownOpen, setIsHealthDropdownOpen] = useState(false);
+  const [subtotal, setSubtotal] = useState(localStorage.getItem("subtotal") || 0);
+
   let timeoutId;
 
-      const { cartItems} = useCart(); // Destructure cartItems and removeFromCart from useCart()
+  console.log('getCartTotal', getCartTotal);
+  
+
+      // const { cartItems} = useCart(); // Destructure cartItems and removeFromCart from useCart()
   
 
   const handleShopMouseEnter = () => {
@@ -37,6 +42,26 @@ const DeskNav = ({showNav,setShowNav}) => {
   const closeNav = () =>{
     setShowNav(false)      
   }
+
+//  const totalitem =  localStorage.getItem("subtotal")
+//  console.log(totalitem);
+
+ const updateSubtotal = () => {
+  setSubtotal(localStorage.getItem("subtotal") || "0");
+};
+ useEffect(() => {
+  // Manually call `updateSubtotal` whenever `subtotal` is updated
+  updateSubtotal();
+
+  // Optionally set an interval for frequent polling (if required)
+  const interval = setInterval(() => {
+    updateSubtotal();
+  }, 100);
+
+  return () => clearInterval(interval); // Cleanup interval on component unmount
+}, []);
+
+const { cartCount } = useCart(); // Access the cartCount value
 
   return (
     <div className={`container  mx-auto flex flex-col sm:flex-row justify-between items-center py-4 ${showNav ? "" : "hidden"} `}>
@@ -147,7 +172,7 @@ const DeskNav = ({showNav,setShowNav}) => {
         <Link to="/cart" className="relative inline-block" onClick={closeNav}>
         {/* Badge */}
         <div className=" badge-container">
-        {cartItems?.length ? cartItems.length : 0}
+        {cartCount}
         </div>
 
         {/* PNG Image */}

@@ -1,4 +1,154 @@
-// import React from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { useCart } from "./CartContext"; // Assuming you're using the CartContext
+import { motion } from "framer-motion";
+
+const Breadcrumb = () => {
+  const paths = [
+    { name: "Home", link: "/" },
+    { name: "Cart", link: "/Cart" },
+  ];
+
+  return (
+    <nav className="breadcrumb mb-4 pt-5">
+      {paths.map((path, index) => (
+        <span key={index}>
+          <Link to={path.link} className="text-gray-400 hover:text-gray-600">
+            {path.name}
+          </Link>
+          {index < paths.length - 1 && (
+            <span className="text-gray-400"> › </span>
+          )}
+        </span>
+      ))}
+    </nav>
+  );
+};
+
+const Cart = () => {
+  const { cartItems, removeFromCart } = useCart(); // Destructure from useCart hook
+  const [updatedCart, setUpdatedCart] = useState([]);
+
+  // Get cart items from localStorage on initial load
+  useEffect(() => {
+    const storedCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    setUpdatedCart(storedCart);
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("subtotal", updatedCart.reduce((total, item) => total + item.quantity, 0))
+  }, [updatedCart])
+
+  const handleQuantityChange = (id, change) => {
+    const currentCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    
+    const updatedCart = currentCart.map((cartItem) => {
+      if (cartItem.id === id) {
+        return { ...cartItem, quantity: Math.max(1, cartItem.quantity + change) }; // Prevent quantity < 1
+      }
+      return cartItem;
+    });
+
+    // Update the cart in localStorage and state
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+    setUpdatedCart(updatedCart);
+  };
+
+  const handleRemoveItem = (id) => {
+    const currentCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+    const updatedCart = currentCart.filter((item) => item.id !== id);
+    
+    // Remove item from localStorage and update the state
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+    setUpdatedCart(updatedCart);
+  };
+
+  return (
+    <div className="max-w-screen-xl mx-auto">
+      <Breadcrumb />
+      <h2 className="text-3xl font-bold mb-8">Shopping Cart</h2>
+
+      {updatedCart.length === 0 ? (
+        <div className="border-solid border-[0.5px] p-5 w-[600px] border-black">
+          <div className="text-center font-bold text-3xl py-10">Oops, your cart is empty</div>
+        </div>
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+          {updatedCart.map((item) => (
+            <motion.div
+              key={item.id}
+              className="border p-4 w-full bg-white shadow-md rounded-lg mx-auto relative"
+              whileHover={{ scale: 1.05 }}
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-48 object-cover rounded-md"
+              />
+              <div className="flex mt-2">
+                {Array(item.rating)
+                  .fill()
+                  .map((_, index) => (
+                    <span key={index} className="text-yellow-400">★</span>
+                  ))}
+                {Array(5 - item.rating)
+                  .fill()
+                  .map((_, index) => (
+                    <span key={index} className="text-gray-300">★</span>
+                  ))}
+              </div>
+              <h3 className="text-lg font-semibold mt-2">{item.title}</h3>
+              <div className="mt-1">
+                <span className="text-xl font-bold">₹{item.price}</span>
+              </div>
+
+              {/* Quantity */}
+              <div className="mt-1">
+                <span className="text-xl font-bold">Quantity:</span>
+                <button
+                  onClick={() => handleQuantityChange(item.id, -1)}
+                  className="px-2 py-1 bg-red-500 text-white rounded ml-2"
+                  disabled={item.quantity <= 1} // Prevent reducing below 1
+                >
+                  -
+                </button>
+
+                <span className="text-xl font-bold mx-4">{item.quantity}</span>
+
+                <button
+                  onClick={() => handleQuantityChange(item.id, 1)}
+                  className="px-2 py-1 bg-green-500 text-white rounded"
+                >
+                  +
+                </button>
+              </div>
+
+              <motion.button
+                onClick={() => handleRemoveItem(item.id)} // Remove item function
+                className="mt-4 py-2 px-4 bg-[#ed548c] hover:bg-[#f02770] text-white rounded-lg w-full"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Remove from Cart
+              </motion.button>
+            </motion.div>
+          ))}
+        </div>
+      )}
+
+      <div className="mt-[25px] h-[0.25px] bg-gray-300" />
+      <div className="text-xl mt-[10px]">
+      Subtotal ({updatedCart.reduce((total, item) => total + item.quantity, 0)} items): ₹
+      {updatedCart.reduce((total, item) => total + item.price * item.quantity, 0)}
+      </div>
+    </div>
+  );
+};
+
+export default Cart;
+
+
+// import React, { useEffect } from "react";
 // import { Link } from "react-router-dom";
 // import { useCart } from "./CartContext"; // Import useCart hook
 // import { motion } from "framer-motion";
@@ -68,7 +218,7 @@
 //       if (cartItem.id === id) {
 //         return {
 //           ...cartItem,
-//           quantity: Math.max(1, cartItem.quantity + change),
+//           quantity: cartItem.quantity + change,
 //         };
 //       }
 //       return cartItem;
@@ -179,167 +329,181 @@
 
 
 
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion";
+// // import React, { useState, useEffect } from "react";
+// // import { Link } from "react-router-dom";
+// // import { motion } from "framer-motion";
 
-const Breadcrumb = () => {
-  const paths = [
-    { name: "Home", link: "/" },
-    { name: "Cart", link: "/Cart" },
-  ];
+// // const Breadcrumb = () => {
+// //   const paths = [
+// //     { name: "Home", link: "/" },
+// //     { name: "Cart", link: "/Cart" },
+// //   ];
 
-  return (
-    <nav className="breadcrumb mb-4 pt-5">
-      {paths.map((path, index) => (
-        <span key={index}>
-          <Link to={path.link} className="text-gray-400 hover:text-gray-600">
-            {path.name}
-          </Link>
-          {index < paths.length - 1 && (
-            <span className="text-gray-400"> › </span>
-          )}
-        </span>
-      ))}
-    </nav>
-  );
-};
+// //   return (
+// //     <nav className="breadcrumb mb-4 pt-5">
+// //       {paths.map((path, index) => (
+// //         <span key={index}>
+// //           <Link to={path.link} className="text-gray-400 hover:text-gray-600">
+// //             {path.name}
+// //           </Link>
+// //           {index < paths.length - 1 && (
+// //             <span className="text-gray-400"> › </span>
+// //           )}
+// //         </span>
+// //       ))}
+// //     </nav>
+// //   );
+// // };
 
-const Cart = () => {
-  // const { cartItems, removeFromCart } = useCart(); // Destructure cartItems and removeFromCart from useCart()
-  const [updatedCart, setUpdatedCart] = useState([]);
+// // const Cart = () => {
+// //   // const { cartItems, removeFromCart } = useCart(); // Destructure cartItems and removeFromCart from useCart()
+// //   const [updatedCart, setUpdatedCart] = useState([]);
 
-  // Get cart items from localStorage on initial load
-  useEffect(() => {
-    const storedCart = JSON.parse(localStorage.getItem("cartItems")) || [];
-    setUpdatedCart(storedCart);
-  }, []);
+// //   // Get cart items from localStorage on initial load
+// //   useEffect(() => {
+// //     const storedCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+// //     setUpdatedCart(storedCart);
+// //   }, []);
 
-  const handleQuantityChange = (id, change) => {
-    // Get the current cart items from localStorage
-    const currentCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+// //   const handleQuantityChange = (id, change) => {
+// //     // Get the current cart items from localStorage
+// //     const currentCart = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-    // Update the quantity of the selected item
-    const updatedCart = currentCart.map((cartItem) => {
-      if (cartItem.id === id) {
-        return {
-          ...cartItem,
-          quantity: Math.max(1, cartItem.quantity + change), // Ensure quantity doesn't go below 1
-        };
-      }
-      return cartItem;
-    });
+// //     // Update the quantity of the selected item
+// //     const updatedCart = currentCart.map((cartItem) => {
+// //       if (cartItem.id === id) {
+// //         return {
+// //           ...cartItem,
+// //           quantity: Math.max(1, cartItem.quantity + change), // Ensure quantity doesn't go below 1
+// //         };
+// //       }
+// //       return cartItem;
+// //     });
 
-    // Save the updated cart back to localStorage
-    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+// //     // Save the updated cart back to localStorage
+// //     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
 
-    // Update the state to trigger a re-render
-    setUpdatedCart(updatedCart);
-  };
+// //     // Update the state to trigger a re-render
+// //     setUpdatedCart(updatedCart);
+// //   };
 
-  const handleRemoveItem = (id) => {
-    // Get current cart items from localStorage
-    const currentCart = JSON.parse(localStorage.getItem("cartItems")) || [];
+// //   const handleRemoveItem = (id) => {
+// //     // Get current cart items from localStorage
+// //     const currentCart = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-    // Filter out the item with the given id
-    const updatedCart = currentCart.filter((item) => item.id !== id);
+// //     // Filter out the item with the given id
+// //     const updatedCart = currentCart.filter((item) => item.id !== id);
 
-    // Save the updated cart back to localStorage
-    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+// //     // Save the updated cart back to localStorage
+// //     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
 
-    // Update the state to trigger a re-render
-    setUpdatedCart(updatedCart);
-  };
+// //     // Update the state to trigger a re-render
+// //     setUpdatedCart(updatedCart);
+// //   };
 
-  return (
-    <div className="max-w-screen-xl mx-auto">
-      <Breadcrumb />
-      <h2 className="text-3xl font-bold mb-8">Shopping Cart</h2>
+// //   useEffect(() => {
+// //     let totalQuantity = 0; // Use a regular variable to accumulate quantity
 
-      {updatedCart.length === 0 ? (
-        <div className="border-solid border-[0.5px] p-5 max-w-[600px] border-black">
-          <div className="text-center font-bold text-3xl py-10">
-            Oops, your cart is empty
-          </div>
-        </div>
-      ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
-          {updatedCart.map((item, index) => (
-            <motion.div
-              key={index}
-              className="border p-4 w-full bg-white shadow-md rounded-lg mx-auto relative"
-              whileHover={{ scale: 1.05 }}
-            >
-              <img
-                src={item.image}
-                alt={item.title}
-                className="w-full h-48 object-cover rounded-md"
-              />
-              <div className="flex mt-2">
-                {Array(item.rating)
-                  .fill()
-                  .map((_, index) => (
-                    <span key={index} className="text-yellow-400">
-                      ★
-                    </span>
-                  ))}
-                {Array(5 - item.rating)
-                  .fill()
-                  .map((_, index) => (
-                    <span key={index} className="text-gray-300">
-                      ★
-                    </span>
-                  ))}
-              </div>
-              <h3 className="text-lg font-semibold mt-2">{item.title}</h3>
-              <div className="mt-1">
-                <span className="text-xl font-bold">₹{item.price}</span>
-              </div>
+// //     updatedCart.forEach((item) => {
+// //       totalQuantity += item?.quantity || 0; // Accumulate quantity safely
+// //     });
+// //     // console.log(totalQuantity);
+    
+// //     localStorage.setItem("totalitems", totalQuantity)
+// //     console.log(totalQuantity);
+// //   }, [updatedCart]);
 
-              {/* Quantity Section */}
-              <div className="mt-1">
-                <span className="text-xl font-bold">Quantity:</span>
 
-                {/* Decrease Quantity Button */}
-                <button
-                  onClick={() => handleQuantityChange(item.id, -1)}
-                  className={`px-2 py-1 bg-red-500 text-white rounded ml-2 ${item.quantity === 1 ? "bg-gray-400" : ""}`}
-                  disabled={item.quantity <= 1} // Prevent reducing below 1
-                >
-                  -
-                </button>
+  
+// //   return (
+// //     <div className="max-w-screen-xl mx-auto">
+// //       <Breadcrumb />
+// //       <h2 className="text-3xl font-bold mb-8">Shopping Cart</h2>
 
-                <span className="text-xl font-bold mx-4">{item.quantity}</span>
+// //       {updatedCart.length === 0 ? (
+// //         <div className="border-solid border-[0.5px] p-5 max-w-[600px] border-black">
+// //           <div className="text-center font-bold text-3xl py-10">
+// //             Oops, your cart is empty
+// //           </div>
+// //         </div>
+// //       ) : (
+// //         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mt-8">
+// //           {updatedCart.map((item, index) => (
+// //             <motion.div
+// //               key={index}
+// //               className="border p-4 w-full bg-white shadow-md rounded-lg mx-auto relative"
+// //               whileHover={{ scale: 1.05 }}
+// //             >
+// //               <img
+// //                 src={item.image}
+// //                 alt={item.title}
+// //                 className="w-full h-48 object-cover rounded-md"
+// //               />
+// //               <div className="flex mt-2">
+// //                 {Array(item.rating)
+// //                   .fill()
+// //                   .map((_, index) => (
+// //                     <span key={index} className="text-yellow-400">
+// //                       ★
+// //                     </span>
+// //                   ))}
+// //                 {Array(5 - item.rating)
+// //                   .fill()
+// //                   .map((_, index) => (
+// //                     <span key={index} className="text-gray-300">
+// //                       ★
+// //                     </span>
+// //                   ))}
+// //               </div>
+// //               <h3 className="text-lg font-semibold mt-2">{item.title}</h3>
+// //               <div className="mt-1">
+// //                 <span className="text-xl font-bold">₹{item.price}</span>
+// //               </div>
 
-                {/* Increase Quantity Button */}
-                <button
-                  onClick={() => handleQuantityChange(item.id, 1)}
-                  className="px-2 py-1 bg-green-500 text-white rounded"
-                >
-                  +
-                </button>
-              </div>
+// //               {/* Quantity Section */}
+// //               <div className="mt-1">
+// //                 <span className="text-xl font-bold">Quantity:</span>
 
-              <motion.button
-                onClick={() => handleRemoveItem(item.id)} // Assuming removeFromCart function is provided
-                className="mt-4 py-2 px-4 bg-[#ed548c] hover:bg-[#f02770] text-white rounded-lg w-full"
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                Remove from Cart
-              </motion.button>
-            </motion.div>
-          ))}
-        </div>
-      )}
+// //                 {/* Decrease Quantity Button */}
+// //                 <button
+// //                   onClick={() => handleQuantityChange(item.id, -1)}
+// //                   className={`px-2 py-1 bg-red-500 text-white rounded ml-2 ${item.quantity === 1 ? "bg-gray-400" : ""}`}
+// //                   disabled={item.quantity <= 1} // Prevent reducing below 1
+// //                 >
+// //                   -
+// //                 </button>
 
-      <div className="mt-[25px] h-[0.25px] bg-gray-300" />
-      <div className="text-xl mt-[10px]">
-        Subtotal ({updatedCart.length} items): ₹
-        {updatedCart.reduce((total, item) => total + item.price * item.quantity, 0)}
-      </div>
-    </div>
-  );
-};
+// //                 <span className="text-xl font-bold mx-4">{item.quantity}</span>
 
-export default Cart;
+// //                 {/* Increase Quantity Button */}
+// //                 <button
+// //                   onClick={() => handleQuantityChange(item.id, 1)}
+// //                   className="px-2 py-1 bg-green-500 text-white rounded"
+// //                 >
+// //                   +
+// //                 </button>
+// //               </div>
+
+// //               <motion.button
+// //                 onClick={() => handleRemoveItem(item.id)} // Assuming removeFromCart function is provided
+// //                 className="mt-4 py-2 px-4 bg-[#ed548c] hover:bg-[#f02770] text-white rounded-lg w-full"
+// //                 whileHover={{ scale: 1.05 }}
+// //                 whileTap={{ scale: 0.95 }}
+// //               >
+// //                 Remove from Cart
+// //               </motion.button>
+// //             </motion.div>
+// //           ))}
+// //         </div>
+// //       )}
+
+// //       <div className="mt-[25px] h-[0.25px] bg-gray-300" />
+// //       <div className="text-xl mt-[10px]">
+// //         Subtotal ({updatedCart.length} items): ₹
+// //         {updatedCart.reduce((total, item) => total + item.price * item.quantity, 0)}
+// //       </div>
+// //     </div>
+// //   );
+// // };
+
+// // export default Cart;
