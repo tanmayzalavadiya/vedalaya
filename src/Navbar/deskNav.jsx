@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import MenuOne from "../MenuOne/MenuOne"; // Make sure you are using MenuOne here
 import cart from '../images/cart.png'
